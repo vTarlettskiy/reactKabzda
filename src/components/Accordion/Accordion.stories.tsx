@@ -1,40 +1,42 @@
-import React, {useState} from "react";
+import type { Meta, StoryObj } from "@storybook/react";
+import { action } from "@storybook/addon-actions";
+import Accordion from "./Accordion";
+import React, { useState } from "react";
 
-type AccordionPropsType = {
-    title: string
-    collapsed: boolean
-    onClick: (value: boolean) => void
-}
+export default {
+  title: "Accordion",
+  component: Accordion,
+};
 
-function Accordion(props: AccordionPropsType) {
-    console.log('Accordion rendered')
+// export default meta;
 
-    return (
-        <div>
-            <AccordionTitle title={props.title} onClick={props.onClick} collapsed={props.collapsed}/>
-            {!props.collapsed && <AccordionBody/>}
-        </div>
-    )
-}
+// type Story = StoryObj<typeof Accordion>;
+//
+// export const FirstStory: Story = {
+//   args: {
+//     title: "hellolo",
+//     collapsed: true,
+//     onClick: () => {},
+//   },
+// };
 
-type AccordionTitlePropsType = {
-    title: string
-    collapsed: boolean
-    onClick: (value: boolean) => void
-}
+const callback = action("accordion mode change event fired");
 
-function AccordionTitle(props: AccordionTitlePropsType) {
-    return <h3 onClick={() => props.onClick(!props.collapsed)}>{props.title}</h3>
-}
+export const MenuCollapsedMode = () => (
+  <Accordion title={"Menu"} collapsed={true} onChange={callback} />
+);
 
-function AccordionBody() {
-    return (
-        <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-        </ul>
-    )
-}
+export const UsersUncollapsedMode = () => (
+  <Accordion title={"Users"} collapsed={false} onChange={callback} />
+);
 
-export default Accordion
+export const ModeChanging = () => {
+  const [value, setValue] = useState<boolean>(true);
+  return (
+    <Accordion
+      title={"Users"}
+      collapsed={value}
+      onChange={() => setValue(!value)}
+    />
+  );
+};
