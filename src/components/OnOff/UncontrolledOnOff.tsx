@@ -1,11 +1,11 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 type OnOffPropsType = {
   onChange: (on: boolean) => void;
   defaultOn?: boolean;
 };
 
-export const UncontrolledOnOff = (props: OnOffPropsType) => {
+const UncontrolledOnOffSecret = (props: OnOffPropsType) => {
   const [on, setOn] = useState(props.defaultOn ? props.defaultOn : false);
 
   const onStyle = {
@@ -56,3 +56,5 @@ export const UncontrolledOnOff = (props: OnOffPropsType) => {
     </div>
   );
 };
+
+export const UncontrolledOnOff = React.memo(UncontrolledOnOffSecret);

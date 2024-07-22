@@ -1,11 +1,11 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 type OnOffPropsType = {
   onChange: (on: boolean) => void;
   on: boolean;
 };
 
-export const OnOff = (props: OnOffPropsType) => {
+const OnOffSecret = (props: OnOffPropsType) => {
   const onStyle = {
     display: "inline-block",
     backgroundColor: props.on ? "green" : "white",
@@ -52,3 +52,5 @@ export const OnOff = (props: OnOffPropsType) => {
     </div>
   );
 };
+
+export const OnOff = React.memo(OnOffSecret);

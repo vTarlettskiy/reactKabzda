@@ -7,7 +7,7 @@ type RatingPropsType = {
   onClick: (value: RatingValueType) => void;
 };
 
-export function Rating(props: RatingPropsType) {
+function RatingSecret(props: RatingPropsType) {
   console.log("Rating rendered");
 
   return (
@@ -21,13 +21,15 @@ export function Rating(props: RatingPropsType) {
   );
 }
 
+export const Rating = React.memo(RatingSecret);
+
 type StarPropsType = {
   selected: boolean;
   value: RatingValueType;
   onClick: (value: RatingValueType) => void;
 };
 
-function Star(props: StarPropsType) {
+function StarSecret(props: StarPropsType) {
   return (
     <span
       onClick={() => {
@@ -38,3 +40,5 @@ function Star(props: StarPropsType) {
     </span>
   );
 }
+
+const Star = React.memo(StarSecret);
