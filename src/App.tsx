@@ -49,6 +49,7 @@ export function App() {
       {/*    { title: "Viktor", value: "4" },*/}
       {/*  ]}*/}
       {/*/>*/}
+      {/*<Clock />*/}
     </div>
   );
 }

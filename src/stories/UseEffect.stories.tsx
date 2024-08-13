@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { AnalogClock } from "../components/Clock/AnalogClock";
 
 export default {
   title: "useEffect demo",
@@ -46,24 +47,4 @@ export const SetTimeoutExample = () => {
   }, []);
 
   return <>Hello, counter: {counter}</>;
-};
-
-export const ClockWithUseEffect = () => {
-  const [time, setTime] = useState("");
-
-  useEffect(() => {
-    setInterval(() => {
-      let date = new Date();
-
-      setTime(
-        date.getHours().toString() +
-          ":" +
-          date.getMinutes().toString() +
-          ":" +
-          date.getSeconds().toString(),
-      );
-    }, 1000);
-  }, []);
-
-  return <>Time: {time}</>;
 };
